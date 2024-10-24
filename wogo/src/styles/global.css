@@ -1,0 +1,26 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* colors */
+  --_hue: 235;
+  --page-bg-color: hsl(20, 31%, 10%);
+  --accent1-primary: hsl(20, 39.86%, 28.04%);
+  --accent1-secondary: hsl(19.67, 31.94%, 37.45%);
+  --accent1-tertiary: hsl(18.95, 32.76%, 22.75%);
+  --accent1-quaternary: hsl(18.95, 20%, 62.75%);
+
+  --accent2-primary: hsl(19.52, 100%, 75.29%);
+  --accent2-secondary: hsl(19.6, 100%, 80.2%);
+  --accent2-tertiary: hsl(21.23, 100%, 87.25%);
+  --accent2-quaternary: hsl(18.95, 100%, 92.55%);
+
+  --txt-dark-clr: hsl(20, 31%, 10%);
+  --txt-primary-clr: hsl(19.52, 100%, 75.29%);
+  --txt-secondary-clr: hsl(19.6, 100%, 80.2%);
+  --txt-tertiary-clr: hsl(21.23, 100%, 87.25%);
+  --txt-quaternary-clr: hsl(18.95, 100%, 92.55%);
+}

@@ -1,12 +1,73 @@
-<h1> test </h1>
+<html lang="nl" transition:animate="none">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>WOGO</title>
+  </head>
+  <body transition:animate="slide">
+    <header>
+      <h1>Walks</h1>
+    </header>
+    <ul>
+      <li>Amsterdam</li>
+      <li>Rotterdam</li>
+      <li>Utrecht</li>
+    </ul>
+    <section>
+      <article></article>
+    </section>
+  </body>
+</html>
 
----
-import { fetchGraphQLData } from '../lib/contentful';
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 
-const params = Astro.params; 
-const query = 
+  body {
+    background-color: #201611;
+  }
+
+  header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  h1 {
+    color: #ffe5d9;
+    font-size: 40px;
+    justify-content: center;
+    align-items: center;
+    padding-top: 0.5em;
+  }
+
+  ul {
+    padding: 2em;
+    color: #ffe5d9;
+    display: flex;
+    list-style: none;
+    padding-left: 2em;
+    justify-content: space-evenly;
+  }
+
+  li {
+  }
+</style>
+
+<script>
+  import { fetchGraphQLData } from "../lib/contentful.js";
+  import Layout from "../layouts/BaseLayout.astro";
+
+  const params = Astro.params;
+
+  async function fetchData() {
+    const query = `
   {
-    pageCollection(where: {slug: "${params.slug}"}, limit: 1) {
+    pageCollection(where: {slug:"${params.slug}"}, limit: 10) {
       items {
         slug
         title
@@ -24,14 +85,14 @@ const query =
               }   
             }
             ... on TypeText {
-              title
-              textParagraph
-              asset {
+                title
+                textParagraph
+                asset {
                 url
                 title
                 description
-               }
-			}
+              }
+            }
             ... on ItemCollection {
               componentsCollection(limit: 4) {
                 items {
@@ -86,7 +147,7 @@ const query =
                 title
               }
             }
-            citysCollection(limit: 4) {
+						citysCollection(limit: 4) {
               items {
                 ... on TypeFIlterItem {
                   location
@@ -98,7 +159,7 @@ const query =
       }
     }
   }
-;
-
-const data = await fetchGraphQLData(query); 
----
+  `;
+  }
+  const data = await fetchGraphQLData(fetch);
+</script>
